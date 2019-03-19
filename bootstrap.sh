@@ -10,7 +10,7 @@ chmod ugo+rwXt /tmp
 apt-get update && apt-get -y update
 
 #Sets correct time and date, edit to reflect your timezone
-sudo timedatectl set-timezone America/Chicago
+#sudo timedatectl set-timezone America/Chicago
 
 #installs virtualmin
 wget http://software.virtualmin.com/gpl/scripts/install.sh
@@ -19,7 +19,7 @@ sh ./install.sh -f -v
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
 # installs Desktop Environment
-apt-get -y install lxde
+apt-get -y install x-window-system lxdm
 
 #Allows autologin to LXDE as vagrant
 sed -i -- 's/# autologin=dgod/autologin=vagrant/g' /etc/lxdm/lxdm.conf
