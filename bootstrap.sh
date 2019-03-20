@@ -23,6 +23,9 @@ sh ./install.sh -f -v
 
 virtualmin create-domain --domain bmlt.bmlt --pass smeg --desc "The server for bmlt" --unix --dir --webmin --web --dns --mail --limits-from-plan
 
+#Install WordPress
+virtualmin install-script --domain bmlt.bmlt -type wordppress ---version latest /wordpress --db mysql wpdb
+    
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
 # installs Desktop Environment
