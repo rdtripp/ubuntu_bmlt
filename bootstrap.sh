@@ -12,9 +12,14 @@ apt-get update && apt-get -y update
 #Sets correct time and date, edit to reflect your timezone
 #sudo timedatectl set-timezone America/Chicago
 
-#installs virtualmin
+#Downloads Virtualmin install script
 wget http://software.virtualmin.com/gpl/scripts/install.sh
-sh ./install.sh -f -v
+
+#Installs full Virtualmin
+#sh ./install.sh -f -v
+
+#Installs Virtualmin Minimum (default)
+sh ./install.sh -f -v -m
 
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
