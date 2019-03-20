@@ -24,7 +24,7 @@ sh ./install.sh -f -v -m
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
 # installs Desktop Environment
-apt-get -y install x-window-system lxdm leafpad synaptic
+apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
 
 #Allows autologin to LXDE as vagrant
 sed -i -- 's/# autologin=dgod/autologin=vagrant/g' /etc/lxdm/lxdm.conf
