@@ -36,7 +36,7 @@ echo "#Added by bootstrap.sh" >> /etc/hosts
 echo "127.0.1.2 " $DOMAIN >> /etc/hosts
 
 #Set private IP address for virtual domain
-virtualmin modify-domain --domain bmlt.bmlt --ip-already 127.0.1.2 
+virtualmin modify-domain --domain $DOMAIN --ip-already 127.0.1.2 
 
 #End virtual domain install
 
@@ -51,7 +51,7 @@ virtualmin install-script --domain $DOMAIN --type wordpress --version latest --p
     
 #Edit wp-config.php
 HOST=${DOMAIN#*.}  
-sed -i -- 's/# username_here/$HOST/g' /home/$HOST/public_html/wordpress/wp-config.php
+sed -i -- 's/# 'username_here'/'$HOST'/g' /home/$HOST/public_html/wordpress/wp-config.php
 
 #End WordPress Install
 
