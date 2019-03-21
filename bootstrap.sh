@@ -51,7 +51,7 @@ virtualmin install-script --domain $DOMAIN --type wordpress --version latest --p
     
 #Edit wp-config.php
 HOST=${DOMAIN#*.}  
-sed -i -- 's/# DB_USER/$HOST/g' /home/$HOST/public_html/wordpress/wp-config.php
+sed -i -- 's/# define( 'DB_USER', 'username_here' );/define( 'DB_USER', '$HOST' );/g' /home/$HOST/public_html/wordpress/wp-config.php
 
 #End WordPress Install
 
