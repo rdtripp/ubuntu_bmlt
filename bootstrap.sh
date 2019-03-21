@@ -23,7 +23,7 @@ sh ./install.sh -f -v
 #sh ./install.sh -f -v -m
 #End Virtualmin Install
 
-#Start virtual server install
+#Start virtual domain install
 #Set virtual domain, virtual domain password, and description 
 DOMAIN="bmlt.bmlt"
 PASSWD="bmlt"
@@ -32,9 +32,13 @@ virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --uni
 
 #append "127.0.1.2" $DOMAIN to /etc/hosts
 echo "" >> /etc/hosts
-echo "#Added by vagrantfile virtual server setup" >> /etc/hosts
+echo "#Added by bootstrap.sh" >> /etc/hosts
 echo "127.0.1.2 " $DOMAIN >> /etc/hosts
-#End virtual server install
+
+#Set private IP address for virtual domain
+virtualmin modify-domain --domain bmlt.bmlt --ip 127.0.1.2 
+
+#End virtual domain install
 
 #Start WordPress Install
 #set wordpress database name
