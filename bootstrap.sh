@@ -12,6 +12,7 @@ apt-get update && apt-get -y update
 #Sets correct time and date, edit to reflect your timezone
 #sudo timedatectl set-timezone America/Chicago
 
+#Starts Virtualmin install
 #Downloads Virtualmin install script
 wget http://software.virtualmin.com/gpl/scripts/install.sh
 
@@ -20,10 +21,31 @@ sh ./install.sh -f -v
 
 #Installs Virtualmin Minimum (default)
 #sh ./install.sh -f -v -m
+#End Virtualmin Install
 
-virtualmin create-domain --domain bmlt.bmlt --pass smeg --desc "The server for bmlt" --unix --dir --webmin --web --dns --mail --limits-from-plan
+#Start virtual server install
+#Set virtual domain, virtual domain password, and description 
+DOMAIN="bmlt.bmlt"
+PASSWD="bmlt"
 
-#sudo mail -s "Test Subject" vagrant@localhost < /dev/null
+virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
+
+#append "127.0.1.2" $DOMAIN to /etc/hosts
+echo "" >> /etc/hosts
+echo "#Added by vagrantfile virtual server setup" >> /etc/hosts
+echo "127.0.1.2 " $DOMAIN >> /etc/hosts
+#End virtual server install
+
+#Start WordPress Install
+#set wordpress database name
+WPDB="wp_bmlt"
+# create database for wordpress
+virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
+
+#Install WordPress
+virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
+    
+#End WordPress Install
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
