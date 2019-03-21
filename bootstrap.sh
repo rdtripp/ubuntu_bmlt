@@ -23,8 +23,11 @@ sh ./install.sh -f -v
 
 virtualmin create-domain --domain bmlt.bmlt --pass bmlt --desc "The server for bmlt" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
 
+# create database for wordpress
+virtualmin create-database --domain bmlt.bmlt --name wp_bmlt --type mysql
+
 #Install WordPress
-#virtualmin install-script --domain bmlt.bmlt -type wordppress ---version latest /wordpress --db mysql wpdb
+virtualmin install-script --domain bmlt.bmlt --type wordpress --version latest --path /wordpress --db mysql wpdb
     
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
