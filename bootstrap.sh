@@ -27,7 +27,7 @@ virtualmin create-domain --domain bmlt.bmlt --pass bmlt --desc "The server for b
 virtualmin create-database --domain bmlt.bmlt --name wp_bmlt --type mysql
 
 #Install WordPress
-virtualmin install-script --domain bmlt.bmlt --type wordpress --version latest --path /wordpress --db mysql wpdb
+virtualmin install-script --domain bmlt.bmlt --type wordpress --version latest --path /wordpress --db mysql wp_bmlt
     
 #sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 
