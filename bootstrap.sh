@@ -28,11 +28,11 @@ sh ./install.sh -f -v
 DOMAIN="bmlt.bmlt"
 PASSWD="bmlt"
 
-virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
+virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
 
 #append "127.0.1.2" $DOMAIN to /etc/hosts
 echo "" >> /etc/hosts
-echo "#Added by bootstrap.sh" >> /etc/hosts
+echo "#Added by vagrantfile virtual server setup" >> /etc/hosts
 echo "127.0.1.2 " $DOMAIN >> /etc/hosts
 #End virtual server install
 
@@ -46,6 +46,7 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
     
 #End WordPress Install
+
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
