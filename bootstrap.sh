@@ -49,6 +49,10 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
     
+#Edit wp-config.php
+HOST=${DOMAIN#*.}  
+sed -i -- 's/# DB_USER/$HOST/g' /home/$HOST/public_html/wordpress/wp-config.php
+
 #End WordPress Install
 
 
