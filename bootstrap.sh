@@ -21,7 +21,9 @@ sh ./install.sh -f -v
 #Installs Virtualmin Minimum (default)
 #sh ./install.sh -f -v -m
 
-virtualmin create-domain --domain bmlt.bmlt --pass bmlt --desc "The server for bmlt" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
+DOMAIN = "bmlt.bmlt"
+
+virtualmin create-domain --domain $DOMAIN --pass bmlt --desc "The server for bmlt" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
 
 # create database for wordpress
 virtualmin create-database --domain bmlt.bmlt --name wp_bmlt --type mysql
