@@ -49,29 +49,12 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
     
-#Edit wp-config.php
-HOST=${DOMAIN#*.}  
-# Associative array where key represents a search string,
-# and the value itself represents the replace string.  
-declare -A confs
-confs=(
-    [username_here]=$HOST
-    [database_name_here]=$WPDB
-    [password_here]=$PASSWD
-)
-
-configurer() {
-    # Loop the config array
-    for i in "${!confs[@]}"
-    do
-        search=$i
-        replace=${confs_wp[$i]}
-        # Note the "" after -i, needed in OS X
-        sed -i "" "s/${search}/${replace}/g" /home/$HOST/public_html/wordpress/wp-config.php
-    done
-}
-configurer
-
+HOST=${DOMAIN#*.}
+#update wp-config.php
+HOST=${DOMAIN#*.}
+sed -i s/database_name_here/$WPDB/g /home/bmlt/public_html/wordpress/wp-config.php
+sed -i s/username_here/$HOST/g /home/bmlt/public_html/wordpress/wp-config.php
+sed -i s/password_here/$PASSWD/g /home/bmlt/public_html/wordpress/wp-config.php
 #End WordPress Install
 
 
