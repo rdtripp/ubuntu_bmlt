@@ -51,7 +51,26 @@ virtualmin install-script --domain $DOMAIN --type wordpress --version latest --p
     
 #Edit wp-config.php
 HOST=${DOMAIN#*.}  
-sed -i -- 's/# 'username_here'/'$HOST'/g' /home/$HOST/public_html/wordpress/wp-config.php
+# Associative array where key represents a search string,
+# and the value itself represents the replace string.  
+declare -A confs
+confs=(
+    [username_here]=$HOST
+    [database_name_here]=$WPDB
+    [password_here]=$PASSWD
+)
+
+configurer() {
+    # Loop the config array
+    for i in "${!confs[@]}"
+    do
+        search=$i
+        replace=${confs_wp[$i]}
+        # Note the "" after -i, needed in OS X
+        sed -i "" "s/${search}/${replace}/g" /home/$HOST/public_html/wordpress/wp-config.php
+    done
+}
+configurer
 
 #End WordPress Install
 
