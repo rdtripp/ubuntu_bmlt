@@ -32,7 +32,7 @@ virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --uni
 
 #append "127.0.1.2" $DOMAIN to /etc/hosts
 echo "" >> /etc/hosts
-echo "#Added by vagrantfile virtual server setup" >> /etc/hosts
+echo "#Added by bootstrap.sh" >> /etc/hosts
 echo "127.0.1.2 " $DOMAIN >> /etc/hosts
 #End virtual server install
 
