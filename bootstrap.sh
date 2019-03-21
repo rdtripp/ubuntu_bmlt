@@ -26,6 +26,9 @@ PASSWD="bmlt"
 
 virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "The server for bmlt" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
 
+#append "127.0.1.2" $DOMAIN to /etc/hosts 
+echo "127.0.1.2 " $DOMAIN >> /etc/hosts
+
 # create database for wordpress
 virtualmin create-database --domain $DOMAIN --name wp_bmlt --type mysql
 
