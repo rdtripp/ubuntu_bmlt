@@ -27,9 +27,9 @@ sh ./install.sh -f -v
 #Set virtual domain, virtual domain password, and description 
 DOMAIN="bmlt.bmlt"
 PASSWD="bmlt"
-#DESC="BMLT DEV"
+DSCPTN="BMLT DEV"
 
-virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "test run" --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
+virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc $DSCPTN --unix --dir --webmin --web --ssl --mysql --dns --mail --limits-from-plan
 
 #append "127.0.1.2" $DOMAIN to /etc/hosts
 echo "" >> /etc/hosts
