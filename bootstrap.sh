@@ -68,17 +68,13 @@ sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/w
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
 #/**Configure WordPress Multisite**//
-sed -i '/\/\* That.s all, stop editing! Happy publishing. \*\// i\
-//* Multisite */ \
-define( "FS_METHOD", "direct" ); \
-define('MULTISITE', true);\
-define('SUBDOMAIN_INSTALL', false);\
-define('DOMAIN_CURRENT_SITE', 'bmlt.bmlt');\
-define('PATH_CURRENT_SITE', '/wordpress/');\
-define('SITE_ID_CURRENT_SITE', 1);\
-define('BLOG_ID_CURRENT_SITE', 1);
-define( 'WP_ALLOW_MULTISITE', true );\
-' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('MULTISITE', true);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('SUBDOMAIN_INSTALL', false);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('DOMAIN_CURRENT_SITE', '$DOMAIN');\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('PATH_CURRENT_SITE', '/wordpress/');;\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('SITE_ID_CURRENT_SITE', 1);;\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('BLOG_ID_CURRENT_SITE', 1);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define( 'WP_ALLOW_MULTISITE', true );\n&/' /home/bmlt/public_html/wordpress/wp-config.php
 
 #End WordPress Install
 
