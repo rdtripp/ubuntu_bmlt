@@ -12,6 +12,13 @@ apt-get update && apt-get -y update
 #Sets correct time and date, edit to reflect your timezone
 #sudo timedatectl set-timezone America/Chicago
 
+#Changes to correct naming in /etc/hosts
+sed -i -- 's/127.0.0.1 ubuntu1804.localdomain//g' /etc/hosts
+sed -i -- 's/ubuntu1804.localdomain/ubuntu1804.bmlt  ubuntu1804/g' /etc/hosts
+
+#Change made to fix /etc/hostname to fix naming:
+sed -i -- 's/ubuntu1804.localdomain/ubuntu1804/g' /etc/hostname
+
 #Starts Virtualmin install
 #Downloads Virtualmin install script
 wget http://software.virtualmin.com/gpl/scripts/install.sh
