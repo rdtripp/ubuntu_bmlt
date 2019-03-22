@@ -4,13 +4,19 @@
 chown root:root /tmp
 chmod ugo+rwXt /tmp
 
-#export DEBIAN_FRONTEND=noninteractive
-
 #Updates base system
 apt-get update && apt-get -y update
 
 #Sets correct time and date, edit to reflect your timezone
-#sudo timedatectl set-timezone America/Chicago
+sudo timedatectl set-timezone America/Chicago
+
+#Changes to correct naming in /etc/hosts
+sed -i -- 's/127.0.0.1 ubuntu1804.localdomain//g' /etc/hosts
+sed -i -- 's/ubuntu1804.localdomain/ubuntu1804.bmlt  ubuntu1804/g' /etc/hosts
+
+#Changes made in /etc/hostname to fix naming:
+sed -i -- 's/ubuntu1804.localdomain/ubuntu1804/g' /etc/hostname
+sudo hostname ubuntu1804
 
 #Starts Virtualmin install
 #Downloads Virtualmin install script
@@ -65,7 +71,7 @@ sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-co
 
 
 # installs Desktop Environment
-apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
+apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
 
 #Allows autologin to LXDE as $DOMAINUSER
 sed -i -- 's/# autologin=dgod/autologin='"$DOMAINUSER"'/g' /etc/lxdm/lxdm.conf
