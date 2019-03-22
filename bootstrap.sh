@@ -71,6 +71,7 @@ sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-co
 
 #Set up system mail
 apt-get -y install mutt mailutils
+sudo mail -s "Test Subject" vagrant@localhost < /dev/null
 sudo mail -s "Test Subject" $DOMAINUSER@localhost < /dev/null
 
 # installs Desktop Environment
