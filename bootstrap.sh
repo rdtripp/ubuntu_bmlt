@@ -16,8 +16,9 @@ apt-get update && apt-get -y update
 sed -i -- 's/127.0.0.1 ubuntu1804.localdomain//g' /etc/hosts
 sed -i -- 's/ubuntu1804.localdomain/ubuntu1804.bmlt  ubuntu1804/g' /etc/hosts
 
-#Change made to fix /etc/hostname to fix naming:
+#Changes made to fix /etc/hostname to fix naming:
 sed -i -- 's/ubuntu1804.localdomain/ubuntu1804/g' /etc/hostname
+sudo hostname ubuntu1804
 
 #Starts Virtualmin install
 #Downloads Virtualmin install script
