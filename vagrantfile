@@ -59,7 +59,30 @@ Vagrant.configure("2") do |config|
   #
   # View the documentation for the provider you are using for more
   # information on available options.
+class MyInstaller < VagrantVbguest::Installers::Linux
 
+  # use /temp instead of /tmp
+  def tmp_path
+    '/temp/VBoxGuestAdditions.iso'
+  end
+
+  # use /media instead of /mnt
+  def mount_point
+    '/media'
+  end
+
+  def install(opts=nil, &block)
+    communicate.sudo('my_distos_way_of_preparing_guestadditions_installation', opts, &block)
+    # calling `super` will run the installation
+    # also it takes care of uploading the right iso file into the box
+    # and cleaning up afterward
+    super
+  end
+end
+
+Vagrant::Config.run do |config|
+  config.vbguest.installer = MyInstaller
+end
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
