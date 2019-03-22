@@ -24,8 +24,9 @@ sh ./install.sh -f -v
 #End Virtualmin Install
 
 #Start virtual domain install
-#Set virtual domain, virtual domain password, and description 
+#Set virtual domain, virtual domain user, and virtual domain password
 DOMAIN="bmlt.bmlt"
+DOMAINUSER=${DOMAIN#*.}
 PASSWD="bmlt"
 
 virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
@@ -49,31 +50,16 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
   
-declare -A confs
-confs=(
-    [username_here]=bmlt
-    [database_name_here]=wp_bmlt
-    [password_here]=bmlt
-)
-
-configurer() {
-    # Loop the config array
-    for i in "${!confs[@]}"
-    do
-        search=$i
-        replace=${confs_wp[$i]}
-        sed -i "s/${search}/${replace}/g" /home/bmlt/public_html/wordpress/wp-config.php
-    done
-}
-configurer
+#Test to see if wp-confi.php is writeable from this script
+echo "THIS IS A TEST!!!" >> /home/bmlt/public_html/wordpress/wp-config.php
 #End WordPress Install
 
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
 
-#Allows autologin to LXDE as vagrant
-sed -i -- 's/# autologin=dgod/autologin=vagrant/g' /etc/lxdm/lxdm.conf
+#Allows autologin to LXDE as $DOMAINUSER
+sed -i -- 's/# autologin=dgod/autologin=$DOMAINUSER/g' /etc/lxdm/lxdm.conf
 
 #Adds Google Chrome web browser
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
