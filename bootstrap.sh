@@ -69,9 +69,12 @@ sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-co
 
 #End WordPress Install
 
+#Set up system mail
+apt-get -y install mutt mailutils
+sudo mail -s "Test Subject" $DOMAINUSER@localhost < /dev/null
 
 # installs Desktop Environment
-apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
+apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
 
 #Allows autologin to LXDE as $DOMAINUSER
 sed -i -- 's/# autologin=dgod/autologin='"$DOMAINUSER"'/g' /etc/lxdm/lxdm.conf
