@@ -60,37 +60,37 @@ sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/w
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
 #/**Configure WordPress Multisite**//
-sed -i 's/.*Happy.*/define('MULTISITE', true);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define('SUBDOMAIN_INSTALL', false);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define('DOMAIN_CURRENT_SITE', '$DOMAIN');\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define('PATH_CURRENT_SITE', '/wordpress/');\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define('SITE_ID_CURRENT_SITE', 1);;\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define('BLOG_ID_CURRENT_SITE', 1);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
-sed -i 's/.*Happy.*/define( 'WP_ALLOW_MULTISITE', true );\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+#sed -i 's/.*Happy.*/define('MULTISITE', true);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+#sed -i 's/.*Happy.*/define('SUBDOMAIN_INSTALL', false);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+#sed -i 's/.*Happy.*/define('DOMAIN_CURRENT_SITE', '$DOMAIN');\n&/' /home/bmlt/public_html/wordpress/wp-config.php#
+#sed -i 's/.*Happy.*/define('PATH_CURRENT_SITE', '/wordpress/');\n&/' /home/bmlt/public_html/wordpress/wp-config.ph#p
+#sed -i 's/.*Happy.*/define('SITE_ID_CURRENT_SITE', 1);;\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+#sed -i 's/.*Happy.*/define('BLOG_ID_CURRENT_SITE', 1);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+#sed -i 's/.*Happy.*/define( 'WP_ALLOW_MULTISITE', true );\n&/' /home/bmlt/public_html/wordpress/wp-config.php
 
 #Configure .htaccess for wordpress multisite
 #Clear contents of .htaccess
-echo -n "" > .htaccess
+#echo -n "" > .htaccess
 
 #add new content to .htaccess
 
-echo "# BEGIN WordPress" >> .htaccess 
-echo "<IfModule mod_rewrite.c>" >> .htaccess
-echo "RewriteEngine On" >> .htaccess
-echo "RewriteBase /wordpress/" >> .htaccess
-echo "RewriteRule ^index\.php$ - [L]" >> .htaccess
+#echo "# BEGIN WordPress" >> .htaccess 
+#echo "<IfModule mod_rewrite.c>" >> .htaccess
+#echo "RewriteEngine On" >> .htaccess
+#echo "RewriteBase /wordpress/" >> .htaccess
+#echo "RewriteRule ^index\.php$ - [L]" >> .htaccess
 
-echo "# add a trailing slash to /wp-admin" >> .htaccess
-echo "RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]" >> .htaccess
+#echo "# add a trailing slash to /wp-admin" >> .htaccess
+#echo "RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]" >> .htaccess
 
-echo "RewriteCond %{REQUEST_FILENAME} -f [OR]" >> .htaccess
-echo "RewriteCond %{REQUEST_FILENAME} -d" >> .htaccess
-echo "RewriteRule ^ - [L]" >> .htaccess
-echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]" >> .htaccess
-echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]" >> .htaccess
-echo "RewriteRule . index.php [L]" >> .htaccess
+#echo "RewriteCond %{REQUEST_FILENAME} -f [OR]" >> .htaccess
+#echo "RewriteCond %{REQUEST_FILENAME} -d" >> .htaccess
+#echo "RewriteRule ^ - [L]" >> .htaccess
+#echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]" >> .htaccess
+#echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]" >> .htaccess
+#echo "RewriteRule . index.php [L]" >> .htaccess
 
-echo "</IfModule>" >> .htaccess
+#echo "</IfModule>" >> .htaccess
 
 #End WordPress Install
 
