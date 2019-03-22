@@ -60,7 +60,7 @@ sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/w
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
 #/**Configure WordPress Multisite**//
-#sed -i 's/.*Happy.*/define('MULTISITE', true);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i 's/.*Happy.*/define('MULTISITE', true);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
 #sed -i 's/.*Happy.*/define('SUBDOMAIN_INSTALL', false);\n&/' /home/bmlt/public_html/wordpress/wp-config.php
 #sed -i 's/.*Happy.*/define('DOMAIN_CURRENT_SITE', '$DOMAIN');\n&/' /home/bmlt/public_html/wordpress/wp-config.php#
 #sed -i 's/.*Happy.*/define('PATH_CURRENT_SITE', '/wordpress/');\n&/' /home/bmlt/public_html/wordpress/wp-config.ph#p
