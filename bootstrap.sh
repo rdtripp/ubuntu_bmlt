@@ -49,6 +49,23 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
   
+declare -A confs
+confs=(
+    [username_here]=bmlt
+    [database_name_here]=wp_bmlt
+    [password_here]=bmlt
+)
+
+configurer() {
+    # Loop the config array
+    for i in "${!confs[@]}"
+    do
+        search=$i
+        replace=${confs_wp[$i]}
+        sed -i "s/${search}/${replace}/g" /home/bmlt/public_html/wordpress/wp-config.php
+    done
+}
+configurer
 #End WordPress Install
 
 
