@@ -64,8 +64,21 @@ virtualmin install-script --domain $DOMAIN --type wordpress --version latest --p
 # /** MySQL database username */
 sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
-/** MySQL database password */
+#/** MySQL database password */
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+
+#/**Configure WordPress Multisite**//
+sed -i '/\/\* That.s all, stop editing! Happy publishing. \*\// i\
+//* Multisite */ \
+define( "FS_METHOD", "direct" ); \
+define('MULTISITE', true);\
+define('SUBDOMAIN_INSTALL', false);\
+define('DOMAIN_CURRENT_SITE', 'bmlt.bmlt');\
+define('PATH_CURRENT_SITE', '/wordpress/');\
+define('SITE_ID_CURRENT_SITE', 1);\
+define('BLOG_ID_CURRENT_SITE', 1);
+define( 'WP_ALLOW_MULTISITE', true );\
+' /home/bmlt/public_html/wordpress/wp-config.php
 
 #End WordPress Install
 
