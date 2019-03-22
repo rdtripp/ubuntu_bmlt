@@ -59,7 +59,7 @@ echo "THIS IS A TEST!!!" >> /home/bmlt/public_html/wordpress/wp-config.php
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal
 
 #Allows autologin to LXDE as $DOMAINUSER
-sed -i -- 's/# autologin=dgod/autologin="$DOMAINUSER"/g' /etc/lxdm/lxdm.conf
+sed -i -- 's/# autologin=dgod/autologin='"$DOMAINUSER"'/g' /etc/lxdm/lxdm.conf
 
 #Adds Google Chrome web browser
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
