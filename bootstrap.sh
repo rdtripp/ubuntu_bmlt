@@ -49,9 +49,9 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
-  
-#Test to see if wp-confi.php is writeable from this script
-echo "THIS IS A TEST!!!" >> /home/bmlt/public_html/wordpress/wp-config.php
+
+#Edit wp-config.php
+ sed -i -- 's/DB_USER/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 #End WordPress Install
 
 
