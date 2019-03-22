@@ -59,6 +59,29 @@ sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/w
 /** MySQL database password */
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
+#Clear contents of .htaccess
+echo -n "" > .htaccess
+
+#add new content to .htaccess
+
+echo "# BEGIN WordPress" >> .htaccess 
+echo "<IfModule mod_rewrite.c>" >> .htaccess
+echo "RewriteEngine On" >> .htaccess
+echo "RewriteBase /wordpress/" >> .htaccess
+echo "RewriteRule ^index\.php$ - [L]" >> .htaccess
+
+echo "# add a trailing slash to /wp-admin" >> .htaccess
+echo "RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]" >> .htaccess
+
+echo "RewriteCond %{REQUEST_FILENAME} -f [OR]" >> .htaccess
+echo "RewriteCond %{REQUEST_FILENAME} -d" >> .htaccess
+echo "RewriteRule ^ - [L]" >> .htaccess
+echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]" >> .htaccess
+echo "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]" >> .htaccess
+echo "RewriteRule . index.php [L]" >> .htaccess
+
+echo "</IfModule>" >> .htaccess
+
 #End WordPress Install
 
 
