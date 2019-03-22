@@ -50,8 +50,17 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 #Install WordPress
 virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
 
-#Edit wp-config.php
- sed -i -- 's/DB_USER/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+#Confiure mysql database access in wp-config.php
+
+#/** The name of the database for WordPress */
+ sed -i -- 's/database_name_here/'"$WPDB"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+
+# /** MySQL database username */
+sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+
+/** MySQL database password */
+sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+
 #End WordPress Install
 
 
