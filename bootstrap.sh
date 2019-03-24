@@ -72,7 +72,7 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 WPADMIN="admin"
 WPADMINPASS="PASSWORD"
 cd /home/$DOMAINUSER/public_html/wordpress
-sudo -u $DOMAINUSER wp core install --url=http://$DOMAIN/wordpress --title="BMLT Test" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=bmlt@bmlt.bmlt
+sudo -u $DOMAINUSER wp core install --url=http://$DOMAIN/wordpress --title="BMLT Test" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
