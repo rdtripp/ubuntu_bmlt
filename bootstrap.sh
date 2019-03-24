@@ -35,7 +35,7 @@ echo "#Added by bootstrap.sh" >> /etc/hosts
 echo "127.0.1.2 " $DOMAIN >> /etc/hosts
 
 #Set private IP address for virtual domain
-virtualmin modify-domain --domain $DOMAIN --ip-already 127.0.1.2 
+sudo virtualmin modify-domain --domain $DOMAIN --shared-ip 127.0.1.2 
 
 #End virtual domain install
 
