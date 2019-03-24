@@ -69,8 +69,9 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 #End Wordpress CLI install
 
 #Configure WordPress Admin User and default site
-cd ~/public_html/wordpress
-sudo -u bmlt -i -- wp core install --url=http://bmlt.bmlt/wordpress --title="BMLT Test" --admin_user=test --admin_password=test --admin_email=bmlt@bmlt.bmlt
+cd /home/bmlt/public_html/wordpress
+wp core install --url=http://bmlt.bmlt/wordpress --title="BMLT Test" --admin_user=test --admin_password=test --admin_email=bmlt@bmlt.bmlt
+cd
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
