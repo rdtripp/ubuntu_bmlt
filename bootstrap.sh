@@ -60,12 +60,19 @@ sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/w
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
 #End WordPress Install
+
 #Install Wordpress CLI
 apt-get update && apt-get -y install curl
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
+#End Wordpress CLI install
 
+#Configure WordPress Admin User and default site
+su $DOMAINUSER
+cd ~/public_html/wordpress
+wp core install --url=http://bmlt.bmlt/wordpress --title="BMLT Test" --admin_user=test --admin_password=test --admin_email=bmlt@bmlt.bmlt
+exit
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
