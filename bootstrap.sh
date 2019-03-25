@@ -68,16 +68,12 @@ chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 #End Wordpress CLI install
 
-#Configure WordPress Admin User and default site
+#Configure WordPress multisite
 WPADMIN="admin"
 WPADMINPASS="PASSWORD"
 WPSITENAME="BMLT TEST"
-#cd /home/$DOMAINUSER/public_html/wordpress
 sudo -u $DOMAINUSER wp core multisite-install --path=/home/$DOMAINUSER/public_html/ --url=http://$DOMAIN/ --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
-
-#Install WordPress Multisite
-#sudo -u $DOMAINUSER wp core multisite-install --path=/home/$DOMAINUSER/public_html/wordpress --title="$WPSITENAME" --admin_user="$WPADMIN" --admin_password="$WPADMINPASS" --admin_email="$DOMAINUSER@$DOMAIN"
-
+sudo -u $DOMAINUSER cp /vagrant/htaccess /home/$DOMAINUSER/public_html/.htaccess
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
 
