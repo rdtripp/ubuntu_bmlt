@@ -86,7 +86,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 apt-get update && apt-get -y install google-chrome-stable
 
 #Launches Google Chrome on default user login
-sudo -u $DOMAINUSER echo @/usr/bin/google-chrome https://$DOMAIN >> ~/.config/lxsession/LXDE/autostart
+echo @/usr/bin/google-chrome https://$DOMAIN >> /home/$DOMAINUSER/.config/lxsession/LXDE/autostart
 
 #Reboots system
 reboot
