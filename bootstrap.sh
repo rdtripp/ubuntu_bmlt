@@ -46,18 +46,18 @@ WPDB="wp_bmlt"
 virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 
 #Install WordPress
-virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
+virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path / --db mysql $WPDB
 
 #Confiure mysql database access in wp-config.php
 
 #/** The name of the database for WordPress */
- sed -i -- 's/database_name_here/'"$WPDB"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+ sed -i -- 's/database_name_here/'"$WPDB"'/g' /home/bmlt/public_html/wp-config.php
 
 # /** MySQL database username */
-sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wp-config.php
 
 #/** MySQL database password */
-sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
+sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wp-config.php
 
 #End WordPress Install
 
@@ -68,13 +68,12 @@ chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 #End Wordpress CLI install
 
-#Configure WordPress Admin User and default site
+#Configure WordPress multisite
 WPADMIN="admin"
 WPADMINPASS="PASSWORD"
 WPSITENAME="BMLT TEST"
-cd /home/$DOMAINUSER/public_html/wordpress
-sudo -u $DOMAINUSER wp core install --url=http://$DOMAIN/wordpress --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
-
+sudo -u $DOMAINUSER wp core multisite-install --path=/home/$DOMAINUSER/public_html/ --url=http://$DOMAIN/ --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
+sudo -u $DOMAINUSER cp /vagrant/htaccess /home/$DOMAINUSER/public_html/.htaccess
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
 
