@@ -56,11 +56,24 @@ virtualmin install-script --domain $DOMAIN --type wordpress --version latest --p
 # /** MySQL database username */
 sed -i -- 's/username_here/'"$DOMAINUSER"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
-/** MySQL database password */
+#/** MySQL database password */
 sed -i -- 's/password_here/'"$PASSWD"'/g' /home/bmlt/public_html/wordpress/wp-config.php
 
 #End WordPress Install
 
+#Install Wordpress CLI
+apt-get update && apt-get -y install curl
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+#End Wordpress CLI install
+
+#Configure WordPress Admin User and default site
+WPADMIN="admin"
+WPADMINPASS="PASSWORD"
+WPSITENAME="BMLT TEST"
+cd /home/$DOMAINUSER/public_html/wordpress
+sudo -u $DOMAINUSER wp core install --url=http://$DOMAIN/wordpress --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
 
 # installs Desktop Environment
 apt-get -y install x-window-system lxdm leafpad synaptic lxterminal mutt
