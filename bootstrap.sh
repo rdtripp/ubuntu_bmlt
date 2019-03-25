@@ -46,7 +46,7 @@ WPDB="wp_bmlt"
 virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 
 #Install WordPress
-virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress --db mysql $WPDB
+virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path / --db mysql $WPDB
 
 #Confiure mysql database access in wp-config.php
 
@@ -73,7 +73,7 @@ WPADMIN="admin"
 WPADMINPASS="PASSWORD"
 WPSITENAME="BMLT TEST"
 #cd /home/$DOMAINUSER/public_html/wordpress
-sudo -u $DOMAINUSER wp core multisite-install --path=/home/$DOMAINUSER/public_html/wordpress/ --url=http://$DOMAIN/wordpress --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
+sudo -u $DOMAINUSER wp core install --path=/home/$DOMAINUSER/public_html/ --url=http://$DOMAIN/ --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
 
 #Install WordPress Multisite
 #sudo -u $DOMAINUSER wp core multisite-install --path=/home/$DOMAINUSER/public_html/wordpress --title="$WPSITENAME" --admin_user="$WPADMIN" --admin_password="$WPADMINPASS" --admin_email="$DOMAINUSER@$DOMAIN"
