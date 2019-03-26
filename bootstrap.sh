@@ -87,7 +87,7 @@ apt-get update && apt-get -y install google-chrome-stable
 
 #Launches Google Chrome on default user login (testing file operations from vagrant)
 #echo "/usr/bin/google-chrome https://bmlt.bmlt.bmlt" >> /home/bmlt/.config/lxsession/LXDE/autostart
-echo "/usr/bin/google-chrome https://bmlt.bmlt.bmlt" > /vagrant/thisfile
+echo "/@usr/bin/google-chrome https://bmlt.bmlt.bmlt" > /vagrant/thisfile
 mv /vagrant/thisfile /home/$DOMAINUSER/thatfile
 
 #Reboots system
