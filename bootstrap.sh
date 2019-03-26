@@ -85,8 +85,10 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 apt-get update && apt-get -y install google-chrome-stable
 
-#Launches Google Chrome on default user login
-echo "/usr/bin/google-chrome https://bmlt.bmlt.bmlt" >> /home/bmlt/.config/lxsession/LXDE/autostart
+#Launches Google Chrome on default user login (testing file operations from vagrant)
+#echo "/usr/bin/google-chrome https://bmlt.bmlt.bmlt" >> /home/bmlt/.config/lxsession/LXDE/autostart
+echo "bullshit" > /vagrant/thisfile
+mv /vagrant/thisfile /home/$DOMAINUSER/thatfile
 
 #Reboots system
 reboot
