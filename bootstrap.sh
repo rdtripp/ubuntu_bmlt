@@ -87,6 +87,6 @@ apt-get update && apt-get -y install google-chrome-stable
 
 #Launches Google Chrome on default user login
 echo "@/usr/bin/google-chrome https://bmlt.bmlt" >> /home/bmlt/.config/lxsession/LXDE/autostart
-
+sed -i -e "@/usr/bin/google-chrome https://bmlt.bmlt.bmlt" /home/bmlt/.config/lxsession/LXDE/autostart
 #Reboots system
 reboot
