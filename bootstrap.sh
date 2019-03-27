@@ -86,7 +86,6 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 apt-get update && apt-get -y install google-chrome-stable
 
 #Launches Google Chrome on default user login (testing file operations from vagrant)
-#echo "/usr/bin/google-chrome https://bmlt.bmlt.bmlt" >> /home/bmlt/.config/lxsession/LXDE/autostart
 ln -s /usr/share/applications/google-chrome.desktop /etc/xdg/autostart/.
 
 #Reboots system
