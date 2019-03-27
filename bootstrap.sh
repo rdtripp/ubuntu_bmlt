@@ -87,6 +87,7 @@ apt-get update && apt-get -y install google-chrome-stable
 
 #Launches Google Chrome on default user login (testing file operations from vagrant)
 cp /usr/share/applications/google-chrome.desktop /etc/xdg/autostart/.
+sed -i -- 's/Exec=/usr/bin/google-chrome-stable %U//usr/bin/google-chrome-stable %U $DOMAIN/g' 
 
 #Reboots system
 reboot
