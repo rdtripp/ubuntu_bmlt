@@ -89,6 +89,6 @@ apt-get update && apt-get -y install google-chrome-stable
 cp /usr/share/applications/google-chrome.desktop /etc/xdg/autostart/.
 sed -i -- 's+Exec=/usr/bin/google-chrome-stable %U+Exec=/usr/bin/google-chrome-stable %U --make-default-browser --disable-metrics+g' /etc/xdg/autostart/google-chrome.desktop
 sed -i -- 's+Exec=/usr/bin/google-chrome-stable %U --make-default-browser --disable-metrics\n&+Exec=/usr/bin/google-chrome-stable %U https://'$DOMAIN'+g' /etc/xdg/autostart/google-chrome.desktop
-
+Exec=/usr/bin/google-chrome-stable %U --make-default-browser --disable-metrics
 #Reboots system
 reboot
