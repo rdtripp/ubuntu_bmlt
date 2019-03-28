@@ -21,10 +21,10 @@ sudo timedatectl set-timezone America/Chicago
 wget http://software.virtualmin.com/gpl/scripts/install.sh
 
 #Installs full Virtualmin
-sh ./install.sh -f -v
+#sh ./install.sh -f -v
 
 #Installs Virtualmin Minimum (default)
-#sh ./install.sh -f -v -m
+sh ./install.sh -f -v -m
 #End Virtualmin Install
 
 #Start virtual domain install
