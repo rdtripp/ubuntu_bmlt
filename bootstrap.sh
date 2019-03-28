@@ -86,3 +86,8 @@ sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin ins
 sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin install bread --activate-network
 sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin install crouton --activate-network
 sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin install bmlt-tabbed-map --activate-network
+
+#Updates system to reflect new sources added by installs
+apt-get update && apt-get -y update
+#Reboot system
+reboot
