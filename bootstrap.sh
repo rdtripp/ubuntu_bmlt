@@ -6,6 +6,13 @@ chmod ugo+rwXt /tmp
 #Updates base system
 apt-get update && apt-get -y update
 
+#Get user input 
+read –p "Enter Domain Name for Virtual Server" DOMAIN
+read -p "Enter Password for Virtual Domain"  PASSWD
+read -p "Enter Admin User for WordPress" WPADMIN
+read -p "Enter WordPress Admin User Password" WPADMINPASS
+read -p "Enter WordPress Default Site Name" WPSITENAME
+
 #Sets correct time and date, edit to reflect your timezone
 sudo timedatectl set-timezone America/Chicago
 
@@ -22,9 +29,9 @@ sh ./install.sh -f -v
 
 #Start virtual domain install
 #Set virtual domain, virtual domain user, and virtual domain password
-DOMAIN="vagrant.vagrant.bmlt"
+#DOMAIN="vagrant.vagrant.bmlt"
 DOMAINUSER=`echo "$DOMAIN" | cut -d'.' -f 1`
-PASSWD="PASSWORD"
+#PASSWD="PASSWORD"
 
 virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
 
@@ -32,7 +39,7 @@ virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --uni
 
 #Start WordPress Install
 #set wordpress database name
-WPDB="wp_bmlt"
+WPDB="wp_$DOMAINUSER"
 # create database for wordpress
 virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 
@@ -60,9 +67,9 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 #End Wordpress CLI install
 
 #Configure WordPress multisite
-WPADMIN="admin"
-WPADMINPASS="PASSWORD"
-WPSITENAME="DO Test"
+#WPADMIN="admin"
+#WPADMINPASS="PASSWORD"
+#WPSITENAME="DO Test"
 sudo -u $DOMAINUSER wp core multisite-install --path=/home/"$DOMAINUSER"/public_html/ --url=http://"$DOMAIN"/ --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
 wget -cO - https://raw.githubusercontent.com/rdtripp/ubuntu_bmlt/nox/htaccess >  /home/"$DOMAINUSER"/public_html/.htaccess
 
