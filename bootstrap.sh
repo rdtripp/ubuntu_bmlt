@@ -66,4 +66,5 @@ WPSITENAME="DO Test"
 sudo -u $DOMAINUSER wp core multisite-install --path=/home/"$DOMAINUSER"/public_html/ --url=http://"$DOMAIN"/ --title="$WPSITENAME" --admin_user=$WPADMIN --admin_password=$WPADMINPASS --admin_email=$DOMAINUSER@$DOMAIN
 wget -cO - https://raw.githubusercontent.com/rdtripp/ubuntu_bmlt/nox/htaccess >  /home/"$DOMAINUSER"/public_html/.htaccess
 
-reboot
+#install WordPress Plugins
+sudo -u $DOMAINUSER cd /home/"$DOMAINUSER"/public_html/ ; wp plugin install bmlt-wordpress-satellite-plugin --activate-network; cd
