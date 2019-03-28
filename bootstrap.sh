@@ -91,10 +91,10 @@ sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin ins
 apt-get update && apt-get -y update
 
 #Get YAP
-wget https://github.com/bmlt-enabled/yap/archive/master.zip > /home/"DOMAINUSER"/public_html/
-unzip /home/"DOMAINUSER"/public_html/yap*
-mv /home/"DOMAINUSER"/public_html/yap* /home/"$DOMAINUSER"/public_html/yap
-chown "$DOMAINUSER":"$DOMAINUSER" /home/"DOMAINUSER"/public_html/yap
+wget https://github.com/bmlt-enabled/yap/archive/master.zip > /home/"$DOMAINUSER"/public_html/
+unzip /home/"$DOMAINUSER"/public_html/yap*
+mv /home/"$DOMAINUSER"/public_html/yap* /home/"$DOMAINUSER"/public_html/yap
+chown "$DOMAINUSER":"$DOMAINUSER" /home/"$DOMAINUSER"/public_html/yap
 #Reboot system
 reboot
 
