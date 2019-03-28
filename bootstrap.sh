@@ -6,6 +6,13 @@ chmod ugo+rwXt /tmp
 #Updates base system
 apt-get update && apt-get -y update
 
+#make swap file
+dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+
 #Get user input 
 read -p "Enter FQDN for Virtual Server:   "  DOMAIN
 read -p "Enter Password for Virtual Server:   "  PASSWD
