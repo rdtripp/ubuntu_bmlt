@@ -6,12 +6,13 @@ chmod ugo+rwXt /tmp
 #Updates base system
 apt-get update && apt-get -y update
 
-#make swap file
-dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+#Configure swap file
+dd if=/dev/zero of=/swapfile bs=2048 count=2097152
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+echo "vm.swappiness=10" >> /etc/sysctl.conf 
 
 #Get user input 
 read -p "Enter FQDN for Virtual Server:   "  DOMAIN
@@ -19,7 +20,7 @@ read -p "Enter Password for Virtual Server:   "  PASSWD
 read -p "Enter Admin User for WordPress:   " WPADMIN
 read -p "Enter WordPress Admin User Password:   " WPADMINPASS
 read -p "Enter WordPress Default Site Name:   " WPSITENAME
-
+ 
 #Sets correct time and date, edit to reflect your timezone
 sudo timedatectl set-timezone America/Chicago
 
