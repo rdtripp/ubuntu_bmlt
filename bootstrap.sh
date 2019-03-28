@@ -7,11 +7,11 @@ chmod ugo+rwXt /tmp
 apt-get update && apt-get -y update
 
 #Get user input 
-read –p "Enter Domain Name for Virtual Server" DOMAIN
-read -p "Enter Password for Virtual Domain"  PASSWD
-read -p "Enter Admin User for WordPress" WPADMIN
-read -p "Enter WordPress Admin User Password" WPADMINPASS
-read -p "Enter WordPress Default Site Name" WPSITENAME
+read -p "Enter FQDN for Virtual Server:   "  DOMAIN
+read -p "Enter Password for Virtual Server:   "  PASSWD
+read -p "Enter Admin User for WordPress:   " WPADMIN
+read -p "Enter WordPress Admin User Password:   " WPADMINPASS
+read -p "Enter WordPress Default Site Name:   " WPSITENAME
 
 #Sets correct time and date, edit to reflect your timezone
 sudo timedatectl set-timezone America/Chicago
