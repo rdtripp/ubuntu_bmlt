@@ -101,7 +101,11 @@ unzip master.zip
 mv ./yap* ./yap
 chown -R "$DOMAINUSER":"$DOMAINUSER" ./yap
 #Configure yap
+sed -i -- 's/$host_username = "";/$mysql_hostname = "localhost";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 sed -i -- 's/$mysql_username = "";/$mysql_username = "'$DOMAINUSER'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's/$mysql_password = "";/$mysql_password = "'$PASSWD'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's/$mysql_database = "";/$mysql_database = "'$YAPDB'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+
 #Reboot system
 #reboot
 
