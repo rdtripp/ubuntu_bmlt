@@ -92,7 +92,7 @@ apt-get update && apt-get -y update
 
 #set yap database name
 YAPDB="yap_$DOMAINUSER"
-#create database for wordpress
+#create database for YAP
 virtualmin create-database --domain $DOMAIN --name $YAPDB --type mysql
 #Get YAP
 cd /home/"$DOMAINUSER"/public_html/
@@ -129,6 +129,19 @@ sed -i -- 's/$mysql_username = "";/$mysql_username = "'$DOMAINUSER'";/g' /home/"
 sed -i -- 's/$mysql_password = "";/$mysql_password = "'$PASSWD'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 sed -i -- 's/$mysql_database = "";/$mysql_database = "'$YAPDB'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+
+#BMLT Root Server Installation
+#set database name
+BMLTDB="bmlt_$DOMAINUSER"
+#create database
+virtualmin create-database --domain $DOMAIN --name $BMLTDB --type mysql
+
+cd /home/"$DOMAINUSER"/public_html/
+wget https://github.com/bmlt-enabled/bmlt-root-server/releases/download/2.12.6/bmlt-root-server.zip
+unzip ./bmlt-root-server.zip
+chown -R "$DOMAINUSER":"$DOMAINUSER" ./main_server
+rm *zip
+
 echo "Setup completed successfully!!"
 #Reboot system
 #reboot
