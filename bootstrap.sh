@@ -120,7 +120,7 @@ read -p "Please BMLT root server user name:   "  BMLTUSR
 sed -i -- 's/$bmlt_username = "";/$bmlt_username = "'$BMLTUSR'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 read -p "Please enter your BMLT root server password:   "  BMLTPASS
-sed -i -- 's/$bmlt_PASSWORD = "";/$bmlt_PASSWORD = "'$BMLTPASS'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's/$bmlt_password = "";/$bmlt_password = "'$BMLTPASS'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 sed -i -- 's/$mysql_hostname = "";/$mysql_hostname = "localhost";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
