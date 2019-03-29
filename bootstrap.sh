@@ -95,7 +95,7 @@ cd /home/"$DOMAINUSER"/public_html/
 wget https://github.com/bmlt-enabled/yap/archive/master.zip 
 unzip master.zip
 mv ./yap* ./yap
-chown "$DOMAINUSER":"$DOMAINUSEr ./yap
+chown "$DOMAINUSER":"$DOMAINUSER" ./yap
 #Reboot system
 #reboot
 
