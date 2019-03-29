@@ -90,6 +90,10 @@ sudo -u "$DOMAINUSER" -i -- wp --path=/home/"$DOMAINUSER"/public_html plugin ins
 #Updates system to reflect new sources added by installs
 apt-get update && apt-get -y update
 
+#set yap database name
+YAPDB="yap_$DOMAINUSER"
+#create database for wordpress
+virtualmin create-database --domain $DOMAIN --name $YAPDB --type mysql
 #Get YAP
 cd /home/"$DOMAINUSER"/public_html/
 wget https://github.com/bmlt-enabled/yap/archive/master.zip 
