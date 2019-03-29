@@ -103,7 +103,7 @@ chown -R "$DOMAINUSER":"$DOMAINUSER" ./yap
 #Configure yap
 read -p "Please Enter Greeting:   "  TITLE
 
-sed -i -- 's/$title "";/$title = "'$TITLE'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's/$title = "";/$title = "'$TITLE'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 
 sed -i -- 's/$mysql_hostname = "";/$mysql_hostname = "localhost";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
