@@ -116,11 +116,11 @@ chown -R "$DOMAINUSER":"$DOMAINUSER" ./yap
 
 echo "Configuring YAP"
 #Configure yap
-read -p "Please Enter Greeting:   "  TITLE
+read -p "Please Enter Phone Greeting:   "  TITLE
 sed -i -- 's/$title = "";/$title = "'"$TITLE"'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 read -p "Please enter your BMLT root server:   "  ROOTSVR
-sed -i -- 's/$bmlt_root_server = "";/$bmlt_root_server = "'$ROOTSVR'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's+$bmlt_root_server = "";+$bmlt_root_server = "'$ROOTSVR'";+g' /home/"$DOMAINUSER"/public_html/yap/config.php
 
 read -p "Please enter your Google Maps API key:   "  GMAPAPI
 sed -i -- 's/$google_maps_api_key = "";/$google_maps_api_key = "'$GMAPAPI'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
