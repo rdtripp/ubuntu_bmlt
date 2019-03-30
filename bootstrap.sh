@@ -40,7 +40,7 @@ wget http://software.virtualmin.com/gpl/scripts/install.sh
 sh ./install.sh -f -v -m
 #End Virtualmin Install
 
-echo "Creating virtual server" "$DOMAIN" 
+echo "Creating virtual server"
 #Start virtual server install
 DOMAINUSER=`echo "$DOMAIN" | cut -d'.' -f 1`
 
