@@ -44,7 +44,8 @@ echo "Creating virtual server"
 #Start virtual server install
 DOMAINUSER=`echo "$DOMAIN" | cut -d'.' -f 1`
 
-virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
+#virtualmin create-domain --domain $DOMAIN --pass $PASSWD --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
+virtualmin create-domain --domain areas.blacksheepna.org --pass tmwamlgmimr --desc "BMLT DEV" --unix --dir --webmin  --web --ssl --mysql --dns --mail --limits-from-plan
 
 #End virtual domain install
 
