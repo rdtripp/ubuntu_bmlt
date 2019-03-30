@@ -101,17 +101,17 @@ apt-get update && apt-get -y update
 
 echo "Starting Yap Installation"
 #set yap database name
-YAPDB="yap_$DOMAINUSER"
+#YAPDB="yap_$DOMAINUSER"
 
 echo "Creating YAP database"
 #create database for YAP
-virtualmin create-database --domain $DOMAIN --name $YAPDB --type mysql
+#virtualmin create-database --domain $DOMAIN --name $YAPDB --type mysql
 
 echo "Downloading YAP & Preparing files"
 #Get YAP
 cd /home/"$DOMAINUSER"/public_html/
-wget https://github.com/bmlt-enabled/yap/archive/master.zip 
-unzip master.zip
+wget https://github.com/bmlt-enabled/yap/archive/2.5.1.zip
+unzip *.zip
 mv ./yap* ./yap
 chown -R "$DOMAINUSER":"$DOMAINUSER" ./yap
 
