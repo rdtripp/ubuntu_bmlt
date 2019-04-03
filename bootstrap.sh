@@ -109,11 +109,11 @@ virtualmin create-database --domain $DOMAIN --name $YAPDB --type mysql
 
 echo "Downloading YAP & Preparing files"
 #Get YAP
-cd /home/"$DOMAINUSER"/public_html/
-wget https://github.com/bmlt-enabled/yap/archive/master.zip 
-unzip master.zip
-mv ./yap* ./yap
-chown -R "$DOMAINUSER":"$DOMAINUSER" ./yap
+mkdir /home/"$DOMAINUSER"/public_html/yap
+cd /home/"$DOMAINUSER"/public_html/yap
+wget https://github.com/bmlt-enabled/yap/releases/download/3.0.1/yap-3.0.1.zip
+unzip *.zip
+chown -R "$DOMAINUSER":"$DOMAINUSER" /home/"$DOMAINUSER"/public_html/yap/
 
 echo "Configuring YAP"
 #Configure yap
