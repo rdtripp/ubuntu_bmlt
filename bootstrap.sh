@@ -116,7 +116,7 @@ chown -R "$DOMAINUSER":"$DOMAINUSER" /home/"$DOMAINUSER"/public_html/*
 echo "Configuring YAP"
 #Configure yap
 read -p "Please Enter Phone Greeting:   "  TITLE
-sed -i -- 's/$title = "";/$title = "'"$TITLE"'";/g' /home/"$DOMAINUSER"/public_html/yap/config.php
+sed -i -- 's/$title = "";/$title = "'"$TITLE"'";/g' /home/"$DOMAINUSER"/public_html/config.php
 
 read -p "Please enter your BMLT root server:   "  ROOTSVR
 sed -i -- 's+$bmlt_root_server = "";+$bmlt_root_server = "'$ROOTSVR'";+g' /home/"$DOMAINUSER"/public_html/config.php
