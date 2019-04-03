@@ -59,7 +59,7 @@ virtualmin create-database --domain $DOMAIN --name $WPDB --type mysql
 
 echo "Installing WordPress"
 #Install WordPress
-virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path / --db mysql $WPDB
+virtualmin install-script --domain $DOMAIN --type wordpress --version latest --path /wordpress/ --db mysql $WPDB
 
 echo "Configuring WordPress"
 #Confiure mysql database access in wp-config.php
